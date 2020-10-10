@@ -21,9 +21,8 @@ class TodoItem extends React.Component {
   }
 
   getStyle() {
-    return this.state.status === 'done'
-      ? { textDecoration: 'line-through' }
-      : {};
+    const { status } = this.state;
+    return status === 'done' ? { textDecoration: 'line-through' } : {};
   }
 
   render() {
