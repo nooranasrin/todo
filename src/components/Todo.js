@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItems from './TodoItems';
 import InputBox from './InputBox';
+import TodoTitle from './TodoTitle';
 
 class Todo extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Todo extends React.Component {
   render() {
     return (
       <div className='todo'>
-        <h1>Todo</h1>
+        <TodoTitle />
         <TodoItems items={this.state.items} />{' '}
         <InputBox addItem={this.addItem} />
       </div>
