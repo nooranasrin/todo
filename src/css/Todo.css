@@ -1,0 +1,12 @@
+.todo {
+  margin-left: 20%;
+}
+
+.inputBox {
+  border: 2px solid darkgray;
+  width: 290px;
+  height: 35px;
+  border-radius: 5px;
+  font-size: larger;
+  font-weight: 545;
+}

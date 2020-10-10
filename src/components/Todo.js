@@ -2,6 +2,7 @@ import React from 'react';
 import TodoItems from './TodoItems';
 import InputBox from './InputBox';
 import TodoTitle from './TodoTitle';
+import '../css/Todo.css';
 
 class Todo extends React.Component {
   constructor(props) {

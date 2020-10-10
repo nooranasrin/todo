@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/EditableTitle.css';
 
 const EditableTitle = ({ onSubmit, onChange, text }) => (
   <div className='EditableTitle'>
