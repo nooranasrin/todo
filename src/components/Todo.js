@@ -16,7 +16,7 @@ class Todo extends React.Component {
   render() {
     return (
       <div className='todo'>
-        <h2>Todo</h2>
+        <h1>Todo</h1>
         <TodoItems items={this.state.items} />{' '}
         <InputBox addItem={this.addItem} />
       </div>

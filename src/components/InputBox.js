@@ -23,7 +23,12 @@ class InputBox extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmission}>
-        <input value={this.state.text} onChange={this.handleChange} />
+        <input
+          className='inputBox'
+          value={this.state.text}
+          onChange={this.handleChange}
+          autoFocus
+        />
       </form>
     );
   }
