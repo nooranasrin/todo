@@ -3,28 +3,34 @@ import React from 'react';
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isDone: false };
+    this.state = { status: 'notDone' };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange() {
-    this.setState(state => ({ isDone: !state.isDone }));
+    const status = { notDone: 'doing', doing: 'done', done: 'notDone' };
+    this.setState(state => ({ status: status[state.status] }));
   }
 
   getClass() {
-    return this.state.isDone ? 'done' : 'notDone';
+    return this.state.status === 'done'
+      ? 'done'
+      : this.state.status === 'notDone'
+      ? 'notDone'
+      : 'doing';
+  }
+
+  getStyle() {
+    return this.state.status === 'done'
+      ? { textDecoration: 'line-through' }
+      : {};
   }
 
   render() {
-    const className = this.getClass();
-    const status = <div className={className + ' statusIndicator'}>&nbsp;</div>;
     return (
       <div className='item' onClick={this.handleChange}>
-        {status}
-        <div
-          className='itemDescription'
-          style={this.state.isDone ? { textDecoration: 'line-through' } : {}}
-        >
+        <div className={this.getClass() + ' status'}>&nbsp;</div>
+        <div className='itemDescription' style={this.getStyle()}>
           {this.props.item}
         </div>
       </div>

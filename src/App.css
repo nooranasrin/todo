@@ -1,4 +1,4 @@
-.statusIndicator {
+.status {
   min-height: 30px;
   width: 20px;
 }
@@ -28,6 +28,10 @@
 
 .notDone {
   background-color: lightblue;
+}
+
+.doing {
+  background-color: orange;
 }
 
 .inputBox {
