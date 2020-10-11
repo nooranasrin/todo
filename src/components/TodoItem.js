@@ -1,12 +1,14 @@
 import React from 'react';
 import '../css/TodoItem.css';
+import DeleteIcon from './DeleteIcon';
 
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { status: 'notDone', isMouseOnOver: false };
     this.handleChange = this.handleChange.bind(this);
-    this.handleHover = this.handleHover.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
+    this.handleOver = this.handleOver.bind(this);
   }
 
   handleChange() {
@@ -14,8 +16,12 @@ class TodoItem extends React.Component {
     this.setState(state => ({ status: status[state.status] }));
   }
 
-  handleHover() {
-    this.setState(({ isMouseOnOver }) => ({ isMouseOnOver: !isMouseOnOver }));
+  handleOver() {
+    this.setState(() => ({ isMouseOnOver: true }));
+  }
+
+  handleLeave() {
+    this.setState(() => ({ isMouseOnOver: false }));
   }
 
   getClass() {
@@ -31,20 +37,23 @@ class TodoItem extends React.Component {
     return status === 'done' ? { textDecoration: 'line-through' } : {};
   }
 
+  getDeleteIcon() {
+    return <DeleteIcon id={this.props.id} remove={this.props.remove} />;
+  }
+
   render() {
-    const component = this.state.isMouseOnOver ? <div>X</div> : '';
     return (
       <div
         className='item'
         onClick={this.handleChange}
-        onMouseOver={this.handleHover}
-        onMouseLeave={this.handleHover}
+        onMouseOver={this.handleOver}
+        onMouseLeave={this.handleLeave}
       >
         <div className={this.getClass() + ' status'}>&nbsp;</div>
         <div className='itemDescription' style={this.getStyle()}>
           {this.props.item}
         </div>
-        {component}
+        {this.state.isMouseOnOver && this.getDeleteIcon()}
       </div>
     );
   }
