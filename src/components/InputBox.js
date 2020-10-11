@@ -1,7 +1,12 @@
 import React from 'react';
 
 const InputBox = props => (
-  <form onSubmit={props.handleSubmission}>
+  <form
+    onSubmit={event => {
+      event.preventDefault();
+      props.handleSubmission();
+    }}
+  >
     <input
       className='inputBox'
       value={props.text}

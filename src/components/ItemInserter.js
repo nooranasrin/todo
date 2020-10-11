@@ -9,8 +9,7 @@ class ItemInserter extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmission(event) {
-    event.preventDefault();
+  handleSubmission() {
     const item = this.state.text;
     this.setState(() => ({ text: '' }));
     this.props.addItem(item);
