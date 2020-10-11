@@ -6,8 +6,7 @@ class TodoItem extends React.Component {
     super(props);
     this.state = { status: 'notDone', isMouseOnOver: false };
     this.handleChange = this.handleChange.bind(this);
-    this.handleOver = this.handleOver.bind(this);
-    this.handleLeave = this.handleLeave.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   handleChange() {
@@ -15,12 +14,8 @@ class TodoItem extends React.Component {
     this.setState(state => ({ status: status[state.status] }));
   }
 
-  handleOver() {
-    this.setState(() => ({ isMouseOnOver: true }));
-  }
-
-  handleLeave() {
-    this.setState(() => ({ isMouseOnOver: false }));
+  handleHover() {
+    this.setState(({ isMouseOnOver }) => ({ isMouseOnOver: !isMouseOnOver }));
   }
 
   getClass() {
@@ -42,8 +37,8 @@ class TodoItem extends React.Component {
       <div
         className='item'
         onClick={this.handleChange}
-        onMouseOver={this.handleOver}
-        onMouseLeave={this.handleLeave}
+        onMouseOver={this.handleHover}
+        onMouseLeave={this.handleHover}
       >
         <div className={this.getClass() + ' status'}>&nbsp;</div>
         <div className='itemDescription' style={this.getStyle()}>
