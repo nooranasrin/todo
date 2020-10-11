@@ -1,4 +1,13 @@
+.titleText {
+  width: 260px;
+  font-weight: bold;
+}
+
 .title {
-  width: fit-content;
   cursor: pointer;
+  font-size: 1.9em;
+  display: flex;
+  width: 300px;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
 }

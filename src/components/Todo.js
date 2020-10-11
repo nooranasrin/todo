@@ -10,6 +10,7 @@ class Todo extends React.Component {
     this.state = { items: [] };
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   addItem(item) {
@@ -24,10 +25,14 @@ class Todo extends React.Component {
     });
   }
 
+  reset() {
+    this.setState(() => ({ items: [] }));
+  }
+
   render() {
     return (
       <div className='todo'>
-        <TodoTitle />
+        <TodoTitle reset={this.reset} />
         <TodoItems items={this.state.items} remove={this.removeItem} />{' '}
         <InputBox addItem={this.addItem} />
       </div>

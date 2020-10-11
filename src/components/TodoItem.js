@@ -5,7 +5,7 @@ import DeleteIcon from './DeleteIcon';
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { status: 'notDone', isMouseOnOver: false };
+    this.state = { status: 'notDone', isOnHover: false };
     this.handleChange = this.handleChange.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
     this.handleOver = this.handleOver.bind(this);
@@ -17,11 +17,11 @@ class TodoItem extends React.Component {
   }
 
   handleOver() {
-    this.setState(() => ({ isMouseOnOver: true }));
+    this.setState(() => ({ isOnHover: true }));
   }
 
   handleLeave() {
-    this.setState(() => ({ isMouseOnOver: false }));
+    this.setState(() => ({ isOnHover: false }));
   }
 
   getClass() {
@@ -53,7 +53,7 @@ class TodoItem extends React.Component {
         <div className='itemDescription' style={this.getStyle()}>
           {this.props.item}
         </div>
-        {this.state.isMouseOnOver && this.getDeleteIcon()}
+        {this.state.isOnHover && this.getDeleteIcon()}
       </div>
     );
   }

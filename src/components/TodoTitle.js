@@ -9,6 +9,7 @@ class TodoTitle extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   handleChange(value) {
@@ -24,8 +25,19 @@ class TodoTitle extends React.Component {
     this.setState(({ inEditMode }) => ({ inEditMode: !inEditMode }));
   }
 
+  reset() {
+    this.props.reset();
+    this.setState(() => ({ text: 'Todo' }));
+  }
+
   render() {
-    const title = <Title text={this.state.text} onClick={this.handleClick} />;
+    const title = (
+      <Title
+        text={this.state.text}
+        onClick={this.handleClick}
+        reset={this.reset}
+      />
+    );
     const inputBox = (
       <EditableTitle
         text={this.state.text}
