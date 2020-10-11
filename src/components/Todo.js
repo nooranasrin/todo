@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItems from './TodoItems';
-import InputBox from './InputBox';
+import ItemInserter from './ItemInserter';
 import TodoTitle from './TodoTitle';
 import '../css/Todo.css';
 
@@ -34,7 +34,7 @@ class Todo extends React.Component {
       <div className='todo'>
         <TodoTitle reset={this.reset} />
         <TodoItems items={this.state.items} remove={this.removeItem} />{' '}
-        <InputBox addItem={this.addItem} />
+        <ItemInserter addItem={this.addItem} />
       </div>
     );
   }

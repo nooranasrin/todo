@@ -49,7 +49,6 @@ class TodoItem extends React.Component {
         onMouseLeave={this.handleLeave}
       >
         <div className={this.getClass() + ' status'}>&nbsp;</div>
-
         <div style={{ width: '230px' }}>
           <div
             className='itemDescription'
