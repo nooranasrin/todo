@@ -1,10 +1,10 @@
 .titleText {
-  width: 260px;
   font-weight: bold;
+  width: fit-content;
+  cursor: pointer;
 }
 
 .title {
-  cursor: pointer;
   font-size: 1.9em;
   display: flex;
   width: 300px;

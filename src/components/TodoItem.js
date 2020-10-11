@@ -45,13 +45,19 @@ class TodoItem extends React.Component {
     return (
       <div
         className='item'
-        onClick={this.handleChange}
         onMouseOver={this.handleOver}
         onMouseLeave={this.handleLeave}
       >
         <div className={this.getClass() + ' status'}>&nbsp;</div>
-        <div className='itemDescription' style={this.getStyle()}>
-          {this.props.item}
+
+        <div style={{ width: '230px' }}>
+          <div
+            className='itemDescription'
+            style={this.getStyle()}
+            onClick={this.handleChange}
+          >
+            {this.props.item}
+          </div>
         </div>
         {this.state.isOnHover && this.getDeleteIcon()}
       </div>

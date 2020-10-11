@@ -1,8 +1,10 @@
 .itemDescription {
   margin-left: 10px;
   font-weight: 500;
-  width: 230px;
+  cursor: pointer;
+  width: fit-content;
   overflow: scroll;
+  margin-right: 15px;
 }
 
 .done {
@@ -28,6 +30,5 @@
   height: 40px;
   margin-bottom: 3px;
   padding: 5px;
-  cursor: pointer;
-  width: 300px;
+  width: fit-content;
 }

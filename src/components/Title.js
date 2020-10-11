@@ -25,8 +25,10 @@ class Title extends React.Component {
         onMouseOver={this.handleOver}
         onMouseLeave={this.handleLeave}
       >
-        <div className='titleText' onClick={this.props.onClick}>
-          {this.props.text}
+        <div style={{ width: '260px' }}>
+          <div className='titleText' onClick={this.props.onClick}>
+            {this.props.text}
+          </div>
         </div>
         {this.state.isOnHover && <DeleteIcon remove={this.props.reset} />}
       </div>
