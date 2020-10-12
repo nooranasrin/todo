@@ -30,7 +30,7 @@ class TodoTitle extends React.Component {
     );
     const inputBox = (
       <div className='editableTitle'>
-        <InputBox onSubmit={this.handleClick} text={this.state.title} />
+        <InputBox onSubmit={this.handleClick} value={this.state.title} />
       </div>
     );
     return !this.state.inEditMode ? title : inputBox;
