@@ -7,15 +7,9 @@ import Description from './Description';
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { status: 'notDone', isOnHover: false };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { isOnHover: false };
     this.handleLeave = this.handleLeave.bind(this);
     this.handleOver = this.handleOver.bind(this);
-  }
-
-  handleChange() {
-    const status = { notDone: 'doing', doing: 'done', done: 'notDone' };
-    this.setState(state => ({ status: status[state.status] }));
   }
 
   handleOver() {
@@ -33,14 +27,10 @@ class TodoItem extends React.Component {
         onMouseOver={this.handleOver}
         onMouseLeave={this.handleLeave}
       >
-        <Status status={this.state.status} />
-        <Description
-          status={this.state.status}
-          item={this.props.item}
-          onClick={this.handleChange}
-        />
+        <Status status={this.props.item.status} />
+        <Description item={this.props.item} onClick={this.props.updateStatus} />
         {this.state.isOnHover && (
-          <DeleteIcon id={this.props.id} remove={this.props.remove} />
+          <DeleteIcon id={this.props.item.id} remove={this.props.remove} />
         )}
       </div>
     );

@@ -7,19 +7,35 @@ import '../css/Todo.css';
 class Todo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [] };
+    this.state = { items: [], id: 0 };
     this.addItem = this.addItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.reset = this.reset.bind(this);
+    this.updateStatus = this.updateStatus.bind(this);
   }
 
-  addItem(item) {
-    this.setState(({ items }) => ({ items: items.concat(item) }));
+  addItem(title) {
+    this.setState(({ items, id }) => ({
+      items: items.concat({ title, status: 'notDone', id: id + 1 }),
+      id: id + 1,
+    }));
   }
 
-  removeItem(index) {
+  updateStatus(id) {
     this.setState(({ items }) => {
-      const itemsList = items.slice(0);
+      const status = { notDone: 'doing', doing: 'done', done: 'notDone' };
+      const itemsList = items.map(item => Object.assign({}, item));
+      const item = itemsList.find(item => item.id === id);
+      item.status = status[item.status];
+      return { items: itemsList };
+    });
+  }
+
+  removeItem(id) {
+    this.setState(({ items }) => {
+      const itemsList = items.map(item => Object.assign({}, item));
+      const item = itemsList.find(item => item.id === id);
+      const index = itemsList.indexOf(item);
       itemsList.splice(index, 1);
       return { items: itemsList };
     });
@@ -33,7 +49,11 @@ class Todo extends React.Component {
     return (
       <div className='todo'>
         <TodoTitle reset={this.reset} />
-        <TodoItems items={this.state.items} remove={this.removeItem} />{' '}
+        <TodoItems
+          items={this.state.items}
+          remove={this.removeItem}
+          updateStatus={this.updateStatus}
+        />{' '}
         <ItemInserter addItem={this.addItem} />
       </div>
     );

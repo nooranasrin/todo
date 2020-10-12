@@ -1,9 +1,16 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-const TodoItems = ({ items, remove }) => {
-  const todoItems = items.map((item, index) => {
-    return <TodoItem key={index} item={item} id={index} remove={remove} />;
+const TodoItems = ({ items, remove, updateStatus }) => {
+  const todoItems = items.map(item => {
+    return (
+      <TodoItem
+        key={item.id}
+        item={item}
+        updateStatus={updateStatus}
+        remove={remove}
+      />
+    );
   });
   return <div>{todoItems} </div>;
 };
