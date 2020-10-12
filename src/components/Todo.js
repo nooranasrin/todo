@@ -1,8 +1,8 @@
 import React from 'react';
 import TodoItems from './TodoItems';
-import ItemInserter from './ItemInserter';
 import TodoTitle from './TodoTitle';
 import '../css/Todo.css';
+import InputBox from './InputBox';
 
 class Todo extends React.Component {
   constructor(props) {
@@ -42,7 +42,7 @@ class Todo extends React.Component {
   }
 
   reset() {
-    this.setState(() => ({ items: [] }));
+    this.setState(() => ({ items: [], id: 0 }));
   }
 
   render() {
@@ -54,7 +54,7 @@ class Todo extends React.Component {
           remove={this.removeItem}
           updateStatus={this.updateStatus}
         />{' '}
-        <ItemInserter addItem={this.addItem} />
+        <InputBox onSubmit={this.addItem} />
       </div>
     );
   }
