@@ -1,40 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import InputBox from './InputBox';
 import Title from './Title';
 import '../css/TodoTitle.css';
 
-class TodoTitle extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { inEditMode: false, title: 'Todo' };
-    this.handleClick = this.handleClick.bind(this);
-    this.reset = this.reset.bind(this);
-  }
+const TodoTitle = ({ reset }) => {
+  const [inEditMode, setInEditMode] = useState(false);
+  const [title, setTitle] = useState('Todo');
 
-  handleClick(title) {
-    this.setState(({ inEditMode }) => ({ inEditMode: !inEditMode, title }));
-  }
+  const handleClick = todoTitle => {
+    setInEditMode(!inEditMode);
+    setTitle(todoTitle);
+  };
 
-  reset() {
-    this.props.reset();
-    this.setState(() => ({ title: 'Todo' }));
-  }
+  const titleElement = (
+    <Title
+      text={title}
+      onClick={() => handleClick(title)}
+      reset={() => {
+        reset();
+        setTitle('Todo');
+      }}
+    />
+  );
 
-  render() {
-    const title = (
-      <Title
-        text={this.state.title}
-        onClick={() => this.handleClick(this.state.title)}
-        reset={this.reset}
-      />
-    );
-    const inputBox = (
-      <div className='editableTitle'>
-        <InputBox onSubmit={this.handleClick} value={this.state.title} />
-      </div>
-    );
-    return !this.state.inEditMode ? title : inputBox;
-  }
-}
+  const inputBoxElement = (
+    <div className='editableTitle'>
+      <InputBox onSubmit={handleClick} value={title} />
+    </div>
+  );
+
+  return !inEditMode ? titleElement : inputBoxElement;
+};
 
 export default TodoTitle;
