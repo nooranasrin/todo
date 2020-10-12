@@ -26,10 +26,6 @@ class TodoItem extends React.Component {
     this.setState(() => ({ isOnHover: false }));
   }
 
-  getDeleteIcon() {
-    return <DeleteIcon id={this.props.id} remove={this.props.remove} />;
-  }
-
   render() {
     return (
       <div
@@ -43,7 +39,9 @@ class TodoItem extends React.Component {
           item={this.props.item}
           onClick={this.handleChange}
         />
-        {this.state.isOnHover && this.getDeleteIcon()}
+        {this.state.isOnHover && (
+          <DeleteIcon id={this.props.id} remove={this.props.remove} />
+        )}
       </div>
     );
   }
