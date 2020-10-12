@@ -26,11 +26,6 @@ class TodoItem extends React.Component {
     this.setState(() => ({ isOnHover: false }));
   }
 
-  getStyle() {
-    const { status } = this.state;
-    return status === 'done' ? { textDecoration: 'line-through' } : {};
-  }
-
   getDeleteIcon() {
     return <DeleteIcon id={this.props.id} remove={this.props.remove} />;
   }
@@ -44,7 +39,7 @@ class TodoItem extends React.Component {
       >
         <Status status={this.state.status} />
         <Description
-          style={this.getStyle()}
+          status={this.state.status}
           item={this.props.item}
           onClick={this.handleChange}
         />
