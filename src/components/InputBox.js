@@ -1,16 +1,16 @@
 import React from 'react';
 
-const InputBox = props => (
+const InputBox = ({ handleSubmission, handleChange, text }) => (
   <form
     onSubmit={event => {
       event.preventDefault();
-      props.handleSubmission();
+      handleSubmission();
     }}
   >
     <input
       className='inputBox'
-      value={props.text}
-      onChange={event => props.handleChange(event.target.value)}
+      value={text}
+      onChange={event => handleChange(event.target.value)}
       autoFocus
     />
   </form>

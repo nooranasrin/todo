@@ -1,10 +1,10 @@
 import React from 'react';
-const DeleteIcon = props => (
+const DeleteIcon = ({ remove, id }) => (
   <div
     style={{ cursor: 'pointer' }}
     onClick={event => {
       event.stopPropagation();
-      props.remove(props.id);
+      remove(id);
     }}
   >
     X

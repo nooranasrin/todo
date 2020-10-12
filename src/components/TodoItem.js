@@ -2,6 +2,7 @@ import React from 'react';
 import '../css/TodoItem.css';
 import DeleteIcon from './DeleteIcon';
 import Status from './Status';
+import Description from './Description';
 
 class TodoItem extends React.Component {
   constructor(props) {
@@ -42,15 +43,11 @@ class TodoItem extends React.Component {
         onMouseLeave={this.handleLeave}
       >
         <Status status={this.state.status} />
-        <div style={{ width: '230px' }}>
-          <div
-            className='itemDescription'
-            style={this.getStyle()}
-            onClick={this.handleChange}
-          >
-            {this.props.item}
-          </div>
-        </div>
+        <Description
+          style={this.getStyle()}
+          item={this.props.item}
+          onClick={this.handleChange}
+        />
         {this.state.isOnHover && this.getDeleteIcon()}
       </div>
     );
