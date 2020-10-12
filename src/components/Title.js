@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Title.css';
 import DeleteIcon from './DeleteIcon';
+import { useHover } from './hooks/hover';
 
 const Title = ({ onClick, text, reset }) => {
-  const [isOnHover, setIsOnHover] = useState(false);
+  const [isOnHover, onMouseOver, onMouseLeave] = useHover();
 
   return (
     <div
       className='title'
-      onMouseOver={() => setIsOnHover(true)}
-      onMouseLeave={() => setIsOnHover(false)}
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
     >
       <div style={{ width: '260px' }}>
         <div className='titleText' onClick={onClick}>
