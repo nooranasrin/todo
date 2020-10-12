@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/TodoItem.css';
 import DeleteIcon from './DeleteIcon';
+import Status from './Status';
 
 class TodoItem extends React.Component {
   constructor(props) {
@@ -24,14 +25,6 @@ class TodoItem extends React.Component {
     this.setState(() => ({ isOnHover: false }));
   }
 
-  getClass() {
-    return this.state.status === 'done'
-      ? 'done'
-      : this.state.status === 'notDone'
-      ? 'notDone'
-      : 'doing';
-  }
-
   getStyle() {
     const { status } = this.state;
     return status === 'done' ? { textDecoration: 'line-through' } : {};
@@ -48,7 +41,7 @@ class TodoItem extends React.Component {
         onMouseOver={this.handleOver}
         onMouseLeave={this.handleLeave}
       >
-        <div className={this.getClass() + ' status'}>&nbsp;</div>
+        <Status status={this.state.status} />
         <div style={{ width: '230px' }}>
           <div
             className='itemDescription'
