@@ -18,7 +18,7 @@ const useHover = function () {
         node.removeEventListener('mouseleave', handleMouseOut);
       };
     }
-  }, [ref.current]);
+  });
 
   return [ref, value];
 };

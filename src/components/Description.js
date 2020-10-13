@@ -8,7 +8,7 @@ const Description = ({ onClick, item }) => {
       <div
         className='itemDescription'
         style={style}
-        onClick={() => onClick(item.id)}
+        onClick={() => onClick({ type: 'updateStatus', itemId: item.id })}
       >
         {item.title}
       </div>
