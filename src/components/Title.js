@@ -4,14 +4,9 @@ import DeleteIcon from './DeleteIcon';
 import { useHover } from './hooks/hover';
 
 const Title = ({ onClick, text, reset }) => {
-  const [isOnHover, onMouseOver, onMouseLeave] = useHover();
-
+  const [ref, isOnHover] = useHover();
   return (
-    <div
-      className='title'
-      onMouseOver={onMouseOver}
-      onMouseLeave={onMouseLeave}
-    >
+    <div className='title' ref={ref}>
       <div style={{ width: '260px' }}>
         <div className='titleText' onClick={onClick}>
           {' '}

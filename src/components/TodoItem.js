@@ -5,10 +5,10 @@ import Description from './Description';
 import { useHover } from './hooks/hover';
 
 const TodoItem = ({ item, updateStatus, remove }) => {
-  const [isOnHover, onMouseOver, onMouseLeave] = useHover();
+  const [ref, isOnHover] = useHover();
 
   return (
-    <div className='item' onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <div className='item' ref={ref}>
       <div className={item.status + ' status'}>&nbsp;</div>
       <Description item={item} onClick={updateStatus} />
       {isOnHover && <DeleteIcon id={item.id} remove={remove} />}
