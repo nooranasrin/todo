@@ -3,13 +3,12 @@ import InputBox from './InputBox';
 import Title from './Title';
 import '../css/TodoTitle.css';
 
-const TodoTitle = ({ reset }) => {
+const TodoTitle = ({ reset, update, title }) => {
   const [inEditMode, setInEditMode] = useState(false);
-  const [title, setTitle] = useState('Todo');
 
   const handleClick = todoTitle => {
     setInEditMode(!inEditMode);
-    setTitle(todoTitle);
+    update(todoTitle);
   };
 
   const titleElement = (
@@ -18,7 +17,7 @@ const TodoTitle = ({ reset }) => {
       onClick={() => handleClick(title)}
       reset={() => {
         reset();
-        setTitle('Todo');
+        update();
       }}
     />
   );
