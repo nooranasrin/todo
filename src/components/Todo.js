@@ -19,9 +19,9 @@ const Todo = () => {
 
   return (
     <div className='todo'>
-      <TodoTitle update={dispatch} title={state.heading} />
+      <TodoTitle update={dispatch} title={state.heading} TodoApi={TodoApi} />
       <TodoItems items={state.items} update={dispatch} />{' '}
-      <InputBox onSubmit={item => dispatch({ type: 'addItem', item })} />
+      <InputBox onSubmit={item => TodoApi.addItem(dispatch, item)} />
     </div>
   );
 };

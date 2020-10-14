@@ -3,18 +3,18 @@ import InputBox from './InputBox';
 import Title from './Title';
 import '../css/TodoTitle.css';
 
-const TodoTitle = ({ update, title }) => {
+const TodoTitle = ({ update, title, TodoApi }) => {
   const [inEditMode, setInEditMode] = useState(false);
 
   const handleClick = todoTitle => {
     setInEditMode(!inEditMode);
-    update({ heading: todoTitle, type: 'updateHeading' });
+    TodoApi.updateHeading(update, todoTitle);
   };
 
   const titleElement = (
     <Title
       text={title}
-      onClick={() => handleClick(title)}
+      onClick={() => setInEditMode(!inEditMode)}
       reset={() => update({ type: 'resetTodo' })}
     />
   );

@@ -1,6 +1,5 @@
 const addItem = ({ items, id, heading }, title) => {
-  const itemsList = items.concat({ title, status: 'notDone', id: id + 1 });
-  return { items: itemsList, id: id + 1, heading };
+  return { items: items.concat(title), id: title.id, heading };
 };
 
 const removeItem = ({ items, id, heading }, itemId) => {
