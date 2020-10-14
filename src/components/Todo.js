@@ -20,7 +20,7 @@ const Todo = () => {
   return (
     <div className='todo'>
       <TodoTitle update={dispatch} title={state.heading} TodoApi={TodoApi} />
-      <TodoItems items={state.items} update={dispatch} />{' '}
+      <TodoItems items={state.items} update={dispatch} TodoApi={TodoApi} />{' '}
       <InputBox onSubmit={item => TodoApi.addItem(dispatch, item)} />
     </div>
   );

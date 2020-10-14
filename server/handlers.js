@@ -9,7 +9,7 @@ const addTodo = (req, res) => {
   todo.id = todo.id + 1;
   todo.items.push(newItem);
   fs.writeFileSync(path, JSON.stringify(todo));
-  res.json(newItem);
+  res.json(todo);
 };
 
 const updateHeading = (req, res) => {
@@ -17,7 +17,7 @@ const updateHeading = (req, res) => {
   const { todo, fs, path } = req.app.locals;
   todo.heading = heading;
   fs.writeFileSync(path, JSON.stringify(todo));
-  res.json(heading);
+  res.json(todo);
 };
 
 const resetTodo = (req, res) => {
@@ -27,4 +27,31 @@ const resetTodo = (req, res) => {
   res.json(newTodo);
 };
 
-module.exports = { serveTodo, addTodo, updateHeading, resetTodo };
+const updateItemStatus = (req, res) => {
+  const { id } = req.body;
+  const { todo, fs, path } = req.app.locals;
+  const status = { notDone: 'doing', doing: 'done', done: 'notDone' };
+  const item = todo.items.find(item => item.id === id);
+  item.status = status[item.status];
+  fs.writeFileSync(path, JSON.stringify(todo));
+  res.json(todo);
+};
+
+const removeItem = (req, res) => {
+  const { id } = req.body;
+  const { todo, fs, path } = req.app.locals;
+  const item = todo.items.find(item => item.id === id);
+  const index = todo.items.indexOf(item);
+  todo.items.splice(index, 1);
+  fs.writeFileSync(path, JSON.stringify(todo));
+  res.json(todo);
+};
+
+module.exports = {
+  serveTodo,
+  addTodo,
+  updateHeading,
+  resetTodo,
+  updateItemStatus,
+  removeItem,
+};

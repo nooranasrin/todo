@@ -4,17 +4,20 @@ import DeleteIcon from './DeleteIcon';
 import Description from './Description';
 import { useHover } from './hooks/hover';
 
-const TodoItem = ({ item, update }) => {
+const TodoItem = ({ item, update, TodoApi }) => {
   const [ref, isOnHover] = useHover();
 
   return (
     <div className='item' ref={ref}>
       <div className={item.status + ' status'}>&nbsp;</div>
-      <Description item={item} onClick={update} />
+      <Description
+        item={item}
+        onClick={id => TodoApi.updateItemStatus(update, id)}
+      />
       {isOnHover && (
         <DeleteIcon
           id={item.id}
-          remove={id => update({ type: 'removeItem', itemId: id })}
+          remove={id => TodoApi.removeItem(update, id)}
         />
       )}
     </div>
