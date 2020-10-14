@@ -15,7 +15,7 @@ const TodoTitle = ({ update, title, TodoApi }) => {
     <Title
       text={title}
       onClick={() => setInEditMode(!inEditMode)}
-      reset={() => update({ type: 'resetTodo' })}
+      reset={() => TodoApi.resetTodo(update)}
     />
   );
 

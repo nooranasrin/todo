@@ -13,7 +13,6 @@ const addTodo = (req, res) => {
 };
 
 const updateHeading = (req, res) => {
-  console.log(req.body);
   const { heading } = req.body;
   const { todo, fs, path } = req.app.locals;
   todo.heading = heading;
@@ -21,4 +20,11 @@ const updateHeading = (req, res) => {
   res.json(heading);
 };
 
-module.exports = { serveTodo, addTodo, updateHeading };
+const resetTodo = (req, res) => {
+  const { fs, path } = req.app.locals;
+  const newTodo = { items: [], id: 0, heading: 'Todo' };
+  fs.writeFileSync(path, JSON.stringify(newTodo));
+  res.json(newTodo);
+};
+
+module.exports = { serveTodo, addTodo, updateHeading, resetTodo };

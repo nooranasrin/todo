@@ -24,8 +24,13 @@ const updateHeading = (dispatch, heading) => {
   sendRequest('api/updateHeading', callback, { heading });
 };
 
+const resetTodo = dispatch => {
+  sendRequest('api/resetTodo', todo => dispatch({ type: 'resetTodo', todo }));
+};
+
 export default {
   fetchTodo,
   addItem,
   updateHeading,
+  resetTodo,
 };
