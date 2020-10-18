@@ -1,4 +1,5 @@
 import React from 'react';
+
 const DeleteIcon = ({ remove, id }) => (
   <div
     style={{ cursor: 'pointer' }}
