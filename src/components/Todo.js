@@ -3,7 +3,7 @@ import TodoItems from './TodoItems';
 import TodoTitle from './TodoTitle';
 import '../css/Todo.css';
 import InputBox from './InputBox';
-import TodoApi from './api/todoApi';
+import TodoApi from '../api/todoApi';
 import reducer from './reducer';
 
 const Todo = () => {

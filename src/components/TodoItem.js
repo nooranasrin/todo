@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/TodoItem.css';
 import DeleteIcon from './DeleteIcon';
 import Description from './Description';
-import { useHover } from './hooks/hover';
+import { useHover } from '../hooks/hover';
 
 const TodoItem = ({ item, update, TodoApi }) => {
   const [ref, isOnHover] = useHover();

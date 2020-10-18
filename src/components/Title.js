@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Title.css';
 import DeleteIcon from './DeleteIcon';
-import { useHover } from './hooks/hover';
+import { useHover } from '../hooks/hover';
 
 const Title = ({ onClick, text, reset }) => {
   const [ref, isOnHover] = useHover();
